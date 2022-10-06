@@ -9,12 +9,14 @@ int main()
     char key;
     int ox, oy;
     int apple_x = 5, apple_y = 3;
-
+    int total = 0;
     int x = 10, y = 5;
+
 
     do
     {
-        sprintf(mas[0], "####################\n"); //here we are building a walls for our locations
+        printf("Total: %d\n", total);
+        sprintf(mas[0], "####################"); //here we are building a walls for our locations
         for(int j = 1; j < 9; j++)
         {
             sprintf(mas[j], "#                  #");
@@ -28,6 +30,15 @@ int main()
         for(int i = 0; i < 10; i++)
             printf("%s\n", mas[i]);
 
+        if(total >= 10 && total < 20)
+            printf("Beginner");
+        else if (total >= 20 && total < 30)
+            printf("COOL DUDE");
+        else if(total >= 40 && total < 80)
+            printf("AMAZING, you are profi!");
+        else if(total >= 80)
+            printf("Please, stop...");
+
         key = getch();
 
         int ox = x;
@@ -39,13 +50,14 @@ int main()
         else if(key == 'd') x++;
 
         if(mas[y][x] == '#'){
-            x = ox; s
+            x = ox;
             y = oy;
         }
 
         if (x == apple_x && y == apple_y){
             apple_x = rand() % 19 + 1;    //here we are used multiply on 1.0 to /
             apple_y = rand() % 8 + 1;    //convert number returned by rand() in double
+            total++;
         }
 
         system("cls");
